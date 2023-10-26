@@ -3,6 +3,9 @@
 
 # encodes unencoded password
 def encode(password):
+    """
+    Ryan McGlinn
+    """
     encoded_password = ''               # initialize encoded password string
     listed_password = list(password)    # convert password str to list of ints
     for i in listed_password:
@@ -12,6 +15,15 @@ def encode(password):
         encoded_password += str(i)      # insert each num into encoded password string
     return encoded_password
 
+def decode(password):
+    """
+    Ethan Van
+    """
+    decoded_password = ''
+    for i in password: # For each digit
+        i = (10 + int(i) - 3) % 10 # Add 10 then subtract 3. Get the remainder of 10
+        decoded_password = decoded_password + str(i)
+    return decoded_password
 
 if __name__ == '__main__':
     user_menu_choice = None
@@ -28,3 +40,7 @@ if __name__ == '__main__':
             user_password = str(input('Please enter your password to encode: '))
             encoded_password = encode(user_password)
             print('Your password has been encoded and stored!')
+        elif user_menu_choice == 2:
+            # get stored encoded and decoded password
+            decoded_password = decode(encoded_password)
+            print(f'The encoded password is {encoded_password}, and the original password is {decoded_password}.')
